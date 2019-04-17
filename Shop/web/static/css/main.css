@@ -1,0 +1,214 @@
+
+/*公用*/
+.comWidth{width: 1000px;margin: 0 auto;}/*这里的comWidth用来保证子元素浮动在1000里面左右浮动 需要注意父元素坍塌*/
+.loginComWidth {width:600px;margin: 0 auto;}
+.inputComWidth {width: 302px;margin: 0 auto;}
+.inputRegisterComWidth {width: 500px;margin: 0 auto;}
+.leftArea{float: left;}
+.rightArea{float: right;}
+.hide{display: none;}
+.show{display: block;}
+.after:after{content: ".";/*使用after伪对象清除浮动*/
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/*topBar*/
+.topBar{height: 31px;background-color: #f7f7f7;line-height: 31px;}
+.collection{background:url(../images/collection.jpg) left center no-repeat;
+    font-weight: bold;
+    background-size: 25px 18px;
+    padding-left: 25px;}
+.topBar a:hover {color: red;}
+/*logo*/
+.logoBar{height:85px;background-color: #1d7ad9;}
+.logo{padding-left: 41px;padding-top: 13px;}
+.logo img{height: 40px;width: 40px;}
+/*搜索框框*/
+.searchBox{width: 430px;margin-top: 20px;margin-left: 185px;}
+.searchText{width: 350px;height: 35px;padding: 0 5px;
+    line-height: 35px\9;/*\9代表ie浏览器*/
+    background-color: #fff;}
+.searchButton{width: 70px;height: 35px;font-size: 14px;font-family:"Microsoft YaHei UI";
+    background-color: #ff8c00;color: #fff}
+/*购物车*/
+.shopCarBox{width: 145px;height: 35px;background: #ff8c00;
+    margin-top: 20px;
+    font: 14px/35px "Microsoft YaHei UI","微软雅黑";color: #fff;/*简写方法*/}
+.shopCar{width: 87px;height:100%;border-right: #e27a00 solid 1px;
+    background: url(../images/shopcar.png) 10px center no-repeat;background-size: 20px 20px;
+    text-indent: 40px;/*text-indent防止了padding-left带来的布局变化 比如让右边变得更长了*/}
+.shopNum{width: 27px;height: 100%;border-left: #ff9c01;text-align: right;padding-right: 29px;/*让文字居右是的文字增长在左边*/
+    background: url(../images/dropdown.png) 32px center no-repeat;background-size: 20px 20px;}
+/*导航栏*/
+.navBox{background: #1369c0;height: 35px;color: #fff;}
+/*导航栏hover*/
+.shopClass:hover{}
+.shopClass{width: 190px;position: relative;}
+.shopClass h3{font-family: "微软雅黑";line-height: 35px;text-align: center;}
+.shopClass i{overflow: hidden;display: inline-block;
+    background: url(../images/dropdown.png) left center no-repeat;background-size: 10px 10px;
+    width: 20px;height: 14px;margin-left: 11px;}
+.nav{line-height: 35px;}
+.nav li{float: left;}
+.nav a{height:35px;display: inline-block;padding: 0 35px;color: #fff;}
+/*.nav .active{background: #4593fd;}*/
+.nav li:hover a{background: #4593fd;}
+
+/*商品类别弹出*/
+.shopClass_show{background: #4593fd;position: absolute;left: 0;width: 189px;/*这里设置为绝对定位脱离标准文档流 寻找第一个非static的父元素为基准 所以设置shopClass为relative 把他设为非static*/
+    border-right: #ccc solid 1px;border-bottom: #ccc solid 1px;}
+.shopClass_item{padding: 12px 10px;border-bottom: #3487f2 solid 1px;line-height: 16px;
+    border-top: #5aa1ee solid 1px;}
+.shopClass_item dt{height: 23px;font-size: 14px;line-height: 1;overflow: hidden;
+    background: url(../images/dropleft.png) right center no-repeat;
+    background-size: 10px 10px;}
+.shopClass_item dd{font-size: 14px;}
+.shopClass_item .b{font: 14px/1 "微软雅黑";}
+.shopClass_item a{color: #fff;padding: 0 5px;display: inline-block;}
+.shopClass_item .aLink{width: 42px;height: 20px;
+    background: url(../images/alink.png) left center no-repeat;background-size: 52px 20px;
+    display: inline-block;line-height: 20px;text-align: center;}
+.shopClass_item a:hover{text-decoration: underline;}
+
+/*.shopClass_item滑过                           相邻才有效！！！！！！！！！！！！！！！！*/
+.shopClass_show dl {z-index: 999;}/*div中如果shopClass_show是shopClass_list的父元素 .shopClass_show:hover .shopClass_list{display: block;}*/
+.shopClass_show:hover +.shopClass_list{display: block;}
+
+/*.shopClass_item active状态*/
+.hoverTest {z-index: 999;}
+.shopClass_show .hoverTest:hover .shopClass_item{background-color: #fff;border-left:#4593fd solid 1px;}
+.shopClass_show .hoverTest:hover .shopClass_item a{color: #000;}/*css的代码的顺序会产生影响 如果.shopClass_item a的位置在这里的后面 那么颜色结果依然是白色*/
+.shopClass_show .hoverTest:hover .shopClass_item .aLink{color: #fff;}
+/*当鼠标移动到shopClass_list 给shopClass_list设置hover 保证shopClass_list不消失*/
+.shopClass_list:hover {display: block;}
+
+    /*右边list*/
+.shopClass_list{width: 634px;border: #ccc solid 1px;padding: 0 20px;background-color: #ffffff;z-index: 999;/*z-index设置div的优先级越大表示越前面*/
+    position: absolute;left: 190px;top:35px;display: none;}/*shopClass_list默认隐藏*/
+.shopClass_listItem {width: 100%; font-size: 14px;padding: 10px 0;border-bottom: #ccc solid 1px;}
+.shopClass_listItem dt{width: 90px;font-weight: bold;}
+.shopClass_listItem dd{margin-left: 100px;margin-top: -24px;line-height: 24px;}
+.shopClass_listItem a{color: #1369c0;padding-right: 12px;}
+.shopClass_listItem a:hover {text-decoration: underline;}
+/*文字链接*/
+.shopClass_listLink {padding: 20px 20px;}
+.shopClass_listLink a{color: #fff;background-color: #2785e6;height: 26px;line-height: 26px;
+    font-size: 12px;display: inline-block;padding: 0 14px 0 8px;margin-right: 12px;}
+.shopClass_listLink span{width: 8px; height: 8px;display: inline-block;
+    background: url(../images/dropleft.png) left center no-repeat;background-size: 8px 8px;}
+
+/*banner*/
+.banner_bar{width: 810px;height: 326px;float: right;position: relative; overflow: hidden;}
+.product .banner_bar {margin-top: 20px;}
+.imgBox {width: 1620px;height: 326px; position: absolute;top: 0;left: 0;}
+.imgBox li{float: left;}
+.imgBox img{width: 810px;height: 326px;display: block;}
+/*banner滑动点击*/
+.imgNum {position: absolute;left: 0;bottom: 10px; width: 100%;text-align: center}
+.imgNum a{display: inline-block;width: 20px;height: 5px;margin: 0 3px;
+    background-color: #fff;}
+/*banner active状态*/
+.imgNum .active {background-color: darkorange;}
+
+/*shop*/
+/*shopTitle*/
+.shop {margin-top: 30px;}
+.shopTitle {width: 100%;height: 25px;}
+.shopTitle .leftArea {background: url(../images/shopTitleicon.png) left center no-repeat;
+    background-size: 20px 20px;text-indent: 30px;}
+.shopTitle .leftArea h3{font-weight: normal;font-size: 16px;}
+.shopTitle .rightArea a{font-size: 14px;}
+.shopTitle .rightArea a:hover{text-decoration: underline;}
+/*shopContent*/
+.shopPcContent {height:400px;border: #ccc solid 1px;overflow: hidden;}
+/*shopBanner*/
+.shopPcBanner {position: relative;}
+.shopPcBanner ul {width: 200px;height: 400px;overflow: hidden;}
+.shopPcBanner ul a{display: inline-block;}
+.shopPcBanner ul img {width: 200px;height: 400px;}
+.shopPcBanner li{float: left;}
+.shopPcList {width: 796px;height: 100%;border-left: #ccc solid 2px;}
+/*shopTop*/
+/*shopItem*/
+.shopPcList_top {margin-right: -4px;}/*这里top排列五张图片之后多了1px 非常难看 设置其-4px 在shopPcContent里面将超出的进行隐藏hidden*/
+.shopPcList_top .shopItem {border-right: #ccc solid 1px;border-bottom: #ccc solid 1px;text-align: center;
+    line-height: 25px;width: 159px;height: 201px;}
+.shopPcList_top.shopItem img {width: 159px;height: 150px;}
+.shopPcList_top .shopItem a {font-weight: bold;font-size: 15px;}
+.shopPcList_top .shopItem p{color: darkorange;}
+/*shopBottom*/
+.shopPcList_bottom .shopItem {width: 198px;height: 97px;line-height: 30px;}
+.shopPcList_bottom img{width: 80px;height: 80px;}
+.shopPcList_bottom .shopItem span {width: 80px;height: 20px;font-size: 20px;margin-bottom: 10px;}
+.shopPcList_bottom .shopItem p{color: darkorange;font-size: 20px;}
+/*bottom*/
+.footer {background-color: #cccccc;width: 100%;height:200px;}
+.footer i{font-style: normal;margin: 0 5px;}
+.footer .footerCenter {text-align: center;line-height: 35px;margin-top: 50px;}
+.footer .footerCenter .p1{padding-top: 50px;}
+
+/*产品分类*/
+.banner .leftArea {background: #f3f3f3;margin-top: 20px;}
+/*产品分类导航*/
+.productClass {border: #c8cbcf solid 1px;width: 180px;}
+.productClass .productClassItemTop{border-bottom: #c8cbcf solid 1px;}
+.productClassItemTop {text-align: center;}
+.productClass dl{margin: 0 15px;}
+.productClass dt{line-height: 40px;font-size: 14px;font-weight: bold;}
+.productClassItem dd{line-height: 30px;}
+.productClassItem dd a {width: 75px;display: inline-block;}/*加上display 才能使得宽高生效*/
+.productClassItem dd a:hover {text-decoration: underline;}
+
+/*产品分类的详细展示.productShow .top span {font-size: 15px;font-weight: bold;}*/
+.productShow {width: 808px; margin-top: 20px;}
+.product .banner_bar {float: none;}/*由于首页banner_bar的右浮动 导致显示错误 去除浮动*/
+.productShow .top {font-size: 15px;font-weight: bold;border-bottom: #cccccc solid 1px;padding: 20px;}
+.productShow .bottom {border-left: #cccccc solid 1px;margin-right: -2px;overflow: hidden;}
+/*商品Item*/
+.productShowItem {width: 201px;float: left;border-right: #cccccc solid 1px;border-bottom: #cccccc solid 1px;}
+.productShowItem .img {display: block;text-align: center;}
+
+/*产品筛选页面*/
+.productFilter {width: 770px;  margin-top: 20px;padding: 20px 20px; line-height: 26px;border: #cccccc solid 1px;
+    font-family: "Microsoft YaHei UI";}
+.productFilter a {display: inline-block;line-height: 26px;padding: 0 5px;}
+.productFilter dd {width:600px; margin-left: 100px;margin-top: -26px;}
+.productFilter dd .active {background-color: #1d7ad9;color: #ffffff;}
+.productFilter dl {padding-bottom: 10px;margin-bottom: 10px; border-bottom: #cccccc solid 1px;}
+.productFilter dd a {color: #1d7ad9;margin-right: 20px;}
+.moreFilter {color: black;margin-left: 720px;line-height: 26px; margin-top: -26px;width: 40px;height:26px;padding-right: 20px;
+    background: url(../images/dropdown.png) left center no-repeat; background-size: 20px 20px;}
+
+/*登陆页面*/
+.loginText h1{color: #ffffff;margin-left: 20px;line-height: 85px;}
+
+.loginFrame {border: #cccccc solid 1px;width: 400px;margin: 20px auto;padding: 40px 50px 10px 50px;color: #7d7d7d;font-size: 15px;}
+.loginFrame .input {border: #cccccc solid 1px;width: 275px;height: 30px;margin-bottom: 20px;text-indent: 10px;padding-right: 25px;}
+.userNameInput {background: url(../images/userName.png) 98% center no-repeat;background-size: 20px 20px;}
+.passwordInput {background: url(../images/password.png) 98% center no-repeat;background-size: 20px 20px;}
+.loginFrame span {float: right;}
+.loginButton {border: #cccccc solid 1px;width: 300px;height: 30px;margin: 20px 0;background-color: #a6a6a6}
+.partnerAccount dd{color: #7d7d7d;font-size: 13px;float: left;margin-right: 10px;line-height: 20px;}
+.partnerAccount dd:hover {text-decoration: underline;}
+.partnerAccount .partnerMore {display: inline-block;width: 30px;height: 20px;padding-right: 7px; background: url(../images/drop.png) right center no-repeat;background-size: 10px 10px;}
+
+/*注册页面*/
+.registerFrame {border: #cccccc solid 1px;width: 600px;margin: 20px auto;padding: 40px 50px 40px 50px;color: #7d7d7d;font-size: 15px;}
+.jia {width: 500px; margin: 0 auto;}
+.registerFrame .input {border: #cccccc solid 1px;width: 275px;height: 30px;text-indent: 10px;padding-right: 25px;}
+.inputItem {height: 32px;width: 100%;text-align: right;margin-bottom: 10px;}
+.inputItem span {margin-right: 20px;display: inline-block;height: 30px;line-height: 30px;}
+.registerFrame i {color: #d9162f;margin-right: 20px;}
+.registerBottom {width: 300px;margin: 0 auto;padding: 0 5px 10px 5px;}/*如果将这里设置为display:inline-block那么margin:0 auto将会失效 只有block的元素才会居中*/
+.registerButton {border: #cccccc solid 1px;width: 300px;height: 30px;background-color: #a6a6a6;margin-top: 20px;}
+/*输入框样式*/
+.locationInput {background: url(../images/location.png) 98% center no-repeat;background-size: 20px 20px;}
+.postInput {background: url(../images/post.png) 98% center no-repeat;background-size: 20px 20px;}
+.hobbyInput {background: url(../images/hobby.png) 98% center no-repeat;background-size: 25px 30px;}
+
+
+
+
